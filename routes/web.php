@@ -21,12 +21,12 @@ Route::get('/registro', function () {
     return view('registro');
 });
 
-Route::get('/registro1', function () {
-    return view('registro1');
+Route::get('/login', function () {
+    return view('login');
 });
 
 
-Route::get('/registro2', function () {
-    return view('registro2');
+Route::get('/agendacita', function () {
+    return view('agendacita');
 });
 
