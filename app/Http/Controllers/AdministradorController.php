@@ -32,7 +32,7 @@ class AdministradorController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'idAdministrador' => 'required|integer|min:0',
-            'correo' => 'required|email|max:255', 
+            'correo' => 'required|email|max:255',  
         ]);
     }
 
