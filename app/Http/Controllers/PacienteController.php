@@ -30,11 +30,11 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'requiered|string|max:255',
-            'apellido' => 'requiered|string|max:255',
-            'idPaciente' => 'requiered|integer|min:0',
-            'correo' => 'requiered|string|max:255',
-            'historialMedico' => 'requiered|string|max:255',
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'idPaciente' => 'required|integer|min:0',
+            'correo' => 'required|email|max:255',
+            'historialMedico' => 'required|string|max:255',
         ]);
     }
 

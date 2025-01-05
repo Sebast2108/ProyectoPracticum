@@ -29,10 +29,10 @@ class HistorialMedicoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'alergias' => 'requiered|string|max:255',
-            'enfermedadesPrevias' => 'requiered|string|max:255',
-            'idHistorial' => 'requiered|integer|min:0',
-            'tratamientos' => 'requiered|string|max:255',
+            'alergias' => 'required|string|max:255',
+            'enfermedadesPrevias' => 'required|string|max:255',
+            'idHistorial' => 'required|integer|min:0',
+            'tratamientos' => 'required|string|max:255',
 
         ]);
     }
