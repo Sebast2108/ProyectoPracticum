@@ -10,9 +10,9 @@ class Gerencia extends Model
     use HasFactory;
 
     protected $fillable =[
-        'nombre'
-        'apellido'
-        'idGerente'
-        'correo'
+        'nombre',
+        'apellido',
+        'idGerente',
+        'correo',
     ];
 }

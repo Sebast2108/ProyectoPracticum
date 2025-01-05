@@ -10,11 +10,11 @@ class Reporte extends Model
     use HasFactory;
 
     protected $fillable =[
-        'correo'
-        'fechaGeneracion'
-        'formato'
-        'idReporte'
-        'tipoReporte'
+        'correo',
+        'fechaGeneracion',
+        'formato',
+        'idReporte',
+        'tipoReporte',
         
     ];
 }

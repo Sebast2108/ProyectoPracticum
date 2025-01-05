@@ -10,11 +10,11 @@ class CitaMedica extends Model
     use HasFactory;
 
     protected $fillable =[
-        'estado'
-        'fecha'
-        'hora'
-        'idCita'
-        'tipoCita'
+        'estado',
+        'fecha',
+        'hora',
+        'idCita',
+        'tipoCita',
         
     ];
 }

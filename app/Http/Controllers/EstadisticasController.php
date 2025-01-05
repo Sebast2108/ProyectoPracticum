@@ -29,9 +29,10 @@ class EstadisticasController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descripcion' => 'requiered|string|max:255'
-            'idEstadistica' => 'requiered|integer|min:0'
-            'valor' => 'requiered|double' 
+            'descripcion' => 'requiered|string|max:255',
+            'idEstadistica' => 'requiered|integer|min:0',
+            'valor' => 'requiered|double' ,
+        ]);
     }
 
     /**

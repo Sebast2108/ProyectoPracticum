@@ -29,12 +29,12 @@ class CitaMedicaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'estado' => 'requiered|string|max:255'
-            'fecha' => 'requiered|date'
-            'hora' => 'requiered|time'
-            'idCita' => 'requiered|string|max:255' 
-            'tipoCita' => 'requiered|string|max:255' 
-        ])
+            'estado' => 'requiered|string|max:255',
+            'fecha' => 'requiered|date',
+            'hora' => 'requiered|time',
+            'idCita' => 'requiered|string|max:255' ,
+            'tipoCita' => 'requiered|string|max:255',
+        ]);
     }
 
     /**

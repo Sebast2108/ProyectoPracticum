@@ -10,10 +10,10 @@ class Medico extends Model
     use HasFactory;
 
     protected $fillable =[
-        'nombre'
-        'apellido'
-        'idMedico'
-        'correo'
-        'especialidad'
+        'nombre',
+        'apellido',
+        'idMedico',
+        'correo',
+        'especialidad',
     ];
 }

@@ -10,9 +10,9 @@ class HistorialMedico extends Model
     use HasFactory;
 
     protected $fillable =[
-        'alergias'
-        'enfermedadesPrevias'
-        'idHistorial'
-        'tratamientos'
+        'alergias',
+        'enfermedadesPrevias',
+        'idHistorial',
+        'tratamientos',
     ];
 }

@@ -10,9 +10,9 @@ class Secretaria extends Model
     use HasFactory;
 
     protected $fillable =[
-        'nombre'
-        'apellido'
-        'idSecretaria'
-        'correo'
+        'nombre',
+        'apellido',
+        'idSecretaria',
+        'correo',
     ];
 }

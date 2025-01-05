@@ -10,9 +10,9 @@ class Administrador extends Model
     use HasFactory;
 
     protected $fillable =[
-        'nombre'
-        'apellido'
-        'idAdministrador'
-        'correo'
+        'nombre',
+        'apellido',
+        'idAdministrador',
+        'correo',
     ];
 }

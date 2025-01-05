@@ -29,11 +29,11 @@ class AdministradorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'requiered|string|max:255'
-            'apellido' => 'requiered|string|max:255'
-            'idAdministrador' => 'requiered|integer|min:0'
-            'correo' => 'requiered|string|max:255' 
-        ])
+            'nombre' => 'requiered|string|max:255',
+            'apellido' => 'requiered|string|max:255',
+            'idAdministrador' => 'requiered|integer|min:0',
+            'correo' => 'requiered|string|max:255', 
+        ]);
     }
 
     /**

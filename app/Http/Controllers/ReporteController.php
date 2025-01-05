@@ -29,12 +29,12 @@ class ReporteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'correo' => 'requiered|string|max:255'
-            'fechaGeneracion' => 'requiered|data'
-            'formato' => 'requiered|string|max:255'
-            'idReporte' => 'requiered|integer|min:0'
-            'tipoReporte' => 'requiered|string|max:255' 
-        ])
+            'correo' => 'requiered|string|max:255',
+            'fechaGeneracion' => 'requiered|data',
+            'formato' => 'requiered|string|max:255',
+            'idReporte' => 'requiered|integer|min:0',
+            'tipoReporte' => 'requiered|string|max:255',
+        ]);
     }
 
     /**

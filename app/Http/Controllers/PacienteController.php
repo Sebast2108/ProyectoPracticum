@@ -21,7 +21,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.create')
+        return view('paciente.create');
     }
 
     /**
@@ -30,12 +30,12 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'requiered|string|max:255'
-            'apellido' => 'requiered|string|max:255'
-            'idPaciente' => 'requiered|integer|min:0'
-            'correo' => 'requiered|string|max:255' 
-            'historialMedico' => 'requiered|string|max:255' 
-        ])
+            'nombre' => 'requiered|string|max:255',
+            'apellido' => 'requiered|string|max:255',
+            'idPaciente' => 'requiered|integer|min:0',
+            'correo' => 'requiered|string|max:255',
+            'historialMedico' => 'requiered|string|max:255',
+        ]);
     }
 
     /**
@@ -43,7 +43,7 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        /return view('paciente.index', compact('paciente'))
+        return view('paciente.index', compact('paciente'));
     }
 
     /**

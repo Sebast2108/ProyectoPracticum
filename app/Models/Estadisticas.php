@@ -10,8 +10,8 @@ class Estadisticas extends Model
     use HasFactory;
 
     protected $fillable =[
-        'descripcion'
-        'idEstadistica'
-        'valor'
+        'descripcion',
+        'idEstadistica',
+        'valor',
     ];
 }
