@@ -30,3 +30,13 @@ Route::get('/agendacita', function () {
     return view('agendacita');
 });
 
+
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+
+Route::resource('paciente', PacienteController::class);
+
+Route::resource('doctor', DoctorController::class);
+ 
+
