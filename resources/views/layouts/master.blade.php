@@ -28,12 +28,29 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="{{ route('home') }}">Inicio</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ ('citamedica.index') }}">Citas Medicas</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('paciente.index') }}">Pacientes</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('doctor.index') }}">Doctores</a>
+                            <a class="nav-link" href="{{ route('medico.index') }}">Medicos</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('secretaria.index') }}">Secretaria</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('administrador.index') }}">Administrador</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('gerencia.index') }}">Gerencia</a>
                         </li>
                     </ul>
                 </div>
