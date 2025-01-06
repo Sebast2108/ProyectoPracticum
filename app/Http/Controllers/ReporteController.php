@@ -12,7 +12,8 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+        $reporte = Reporte::all();
+        return view('reporte.index', compact('reporte'));
     }
 
     /**

@@ -12,7 +12,8 @@ class HistorialMedicoController extends Controller
      */
     public function index()
     {
-        //
+        $historialMedico = HistorialMedico::all();
+        return view('historialMedico.index', compact('historialMedico'));
     }
 
     /**

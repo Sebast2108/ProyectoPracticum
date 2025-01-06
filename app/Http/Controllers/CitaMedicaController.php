@@ -12,7 +12,8 @@ class CitaMedicaController extends Controller
      */
     public function index()
     {
-        //
+        $citaMedica = CitaMedica::all();
+        return view('citaMedica.index', compact('citaMedica'));
     }
 
     /**

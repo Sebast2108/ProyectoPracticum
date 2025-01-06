@@ -12,7 +12,8 @@ class EstadisticasController extends Controller
      */
     public function index()
     {
-        //
+        $estadisticas = Estadisticas::all();
+        return view('estadisticas.index', compact('estadisticas'));
     }
 
     /**

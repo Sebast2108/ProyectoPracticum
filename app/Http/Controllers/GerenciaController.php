@@ -12,7 +12,8 @@ class GerenciaController extends Controller
      */
     public function index()
     {
-        //
+        $gerencia = Gerencia::all();
+        return view('gerencia.index', compact('gerencia'));
     }
 
     /**

@@ -1,24 +1,23 @@
 @extends ('layouts.master')
 
-@section ('title','Listado de Pacientes')
+@section ('title','Listado de Estadisticas')
 
 @section ('content')
 
-    <h2> Listado de Pacientes </h2>
+    <h2> Listado de Estadisticas </h2>
      <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Correo</th>
+                <th>Descripcion</th>
+                <th>Valor</th>
                 <th>Actions</th>
             </tr>
         </thead>
 
         <tbody>
 
-        //Codigo en php para consultar base de datos de la tabla pacientes.
+        //Codigo en php para consultar base de datos de la tabla Estadisticas.
 
         </tbody>
      </table>
