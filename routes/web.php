@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdministradorController;
-use App\Http\Controllers\CitaMedicaController;
+use App\Http\Controllers\Cita_MedicaController;
+use App\Http\Controllers\CitaController;
+use App\Http\Controllers\CitasController;
 use App\Http\Controllers\EstadisticasController;
 use App\Http\Controllers\GerenciaController;
+use App\Http\Controllers\GerenteController;
+use App\Http\Controllers\HistorialController;
 use App\Http\Controllers\HistorialMedicoController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
@@ -50,17 +54,18 @@ Route::resource('medico', MedicoController::class);
 
 Route::resource('administrador', AdministradorController::class);
 
-Route::resource('citamedica', CitaMedicaController::class);
+Route::resource('citas', CitasController::class);
 
-Route::resource('estadistica', EstadisticasController::class);
+Route::resource('estadisticas', EstadisticasController::class);
 
-Route::resource('gerencia', GerenciaController::class);
+Route::resource('gerente', GerenteController::class);
 
-Route::resource('historialMedico', HistorialMedicoController::class);
+Route::resource('historial', HistorialController::class);
 
 Route::resource('reporte', ReporteController::class);
 
 Route::resource('secretaria', SecretariaController::class);
+
 
 
 

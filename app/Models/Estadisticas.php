@@ -9,9 +9,11 @@ class Estadisticas extends Model
 {
     use HasFactory;
 
+    protected $table = 'estadisticas';
+
     protected $fillable =[
         'descripcion',
-        'idEstadistica',
+        'id_estadistica',
         'valor',
     ];
 }

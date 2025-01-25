@@ -32,10 +32,14 @@ class PacienteController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'idPaciente' => 'required|integer|min:0',
-            'correo' => 'required|email|max:255',
-            'historialMedico' => 'required|string|max:255',
+            'id_paciente' => 'required|integer|unique:paciente,id_paciente',
+            'correo' => 'required|email|max:255|unique:paciente,correo',
+            'historial_medico' => 'required|string|max:255',
         ]);
+
+        Paciente::create($request->all());
+
+        return redirect()->route('paciente.index')->with('success', 'Paciente creado exitosamente.');
     }
 
     /**
@@ -43,7 +47,7 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        return view('paciente.index', compact('paciente'));
+        return view('paciente.show', compact('paciente'));
     }
 
     /**
@@ -51,7 +55,7 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
-        //
+        return view('paciente.edit', compact('paciente'));
     }
 
     /**
@@ -59,7 +63,17 @@ class PacienteController extends Controller
      */
     public function update(Request $request, Paciente $paciente)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'id_paciente' => 'required|integer|unique:paciente,id_paciente,' . $paciente->id,
+            'correo' => 'required|email|max:255|unique:paciente,correo,' . $paciente->id,
+            'historial_medico' => 'required|string|max:255',
+        ]);
+
+        $paciente->update($request->all());
+
+        return redirect()->route('paciente.index')->with('success', 'Paciente actualizado exitosamente.');
     }
 
     /**
@@ -67,6 +81,8 @@ class PacienteController extends Controller
      */
     public function destroy(Paciente $paciente)
     {
-        //
+        $paciente->delete();
+
+        return redirect()->route('paciente.index')->with('success', 'Paciente eliminado exitosamente.');
     }
 }

@@ -16,12 +16,12 @@ class ReporteController extends Controller
         return view('reporte.index', compact('reporte'));
     }
 
-    /**
+    /*
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        return view('reporte.create');
     }
 
     /**
@@ -31,11 +31,15 @@ class ReporteController extends Controller
     {
         $request->validate([
             'correo' => 'required|email|max:255',
-            'fechaGeneracion' => 'required|data',
+            'fechaGeneracion' => 'required|date',
             'formato' => 'required|string|max:255',
-            'idReporte' => 'required|integer|min:0',
+            'idReporte' => 'required|integer|unique:reportes,idReporte',
             'tipoReporte' => 'required|string|max:255',
         ]);
+
+        Reporte::create($request->all());
+
+        return redirect()->route('reporte.index')->with('success', 'Reporte creado con éxito.');
     }
 
     /**
@@ -43,7 +47,7 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        //
+        return view('reporte.show', compact('reporte'));
     }
 
     /**
@@ -51,7 +55,7 @@ class ReporteController extends Controller
      */
     public function edit(Reporte $reporte)
     {
-        //
+        return view('reporte.edit', compact('reporte'));
     }
 
     /**
@@ -59,7 +63,17 @@ class ReporteController extends Controller
      */
     public function update(Request $request, Reporte $reporte)
     {
-        //
+        $request->validate([
+            'correo' => 'required|email|max:255',
+            'fechaGeneracion' => 'required|date',
+            'formato' => 'required|string|max:255',
+            'idReporte' => 'required|integer|unique:reportes,idReporte,' . $reporte->id,
+            'tipoReporte' => 'required|string|max:255',
+        ]);
+
+        $reporte->update($request->all());
+
+        return redirect()->route('reporte.index')->with('success', 'Reporte actualizado con éxito.');
     }
 
     /**
@@ -67,6 +81,8 @@ class ReporteController extends Controller
      */
     public function destroy(Reporte $reporte)
     {
-        //
+        $reporte->delete();
+
+        return redirect()->route('reporte.index')->with('success', 'Reporte eliminado con éxito.');
     }
 }

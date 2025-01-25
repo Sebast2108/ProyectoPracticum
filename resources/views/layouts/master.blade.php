@@ -30,7 +30,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ ('citamedica.index') }}">Citas Medicas</a>
+                        <a class="nav-link" href="{{ route('citas.index') }}">Citas Medicas</a>
                         </li>
 
                         <li class="nav-item">
@@ -50,8 +50,21 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('gerencia.index') }}">Gerencia</a>
+                            <a class="nav-link" href="{{ route('gerente.index') }}">Gerentes</a>
                         </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ route('estadisticas.index') }}">Estadisticas</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ route('historial.index') }}">Historial Medico</a>
+                        </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="{{ route('reporte.index') }}">Reportes</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

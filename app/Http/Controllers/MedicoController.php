@@ -21,7 +21,7 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        //
+        return view('medico.create');
     }
 
     /**
@@ -32,10 +32,14 @@ class MedicoController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'idMedico' => 'required|integer|min:0',
-            'correo' => 'requierd|email|max:255',
+            'id_medico' => 'required|integer|unique:medico,id_medico',
+            'correo' => 'required|string|email|max:255|unique:medico,correo',
             'especialidad' => 'required|string|max:255',
         ]);
+
+        Medico::create($request->all());
+        
+        return redirect()->route('medico.index')->with('success', 'Médico creado exitosamente.');
     }
 
     /**
@@ -43,7 +47,7 @@ class MedicoController extends Controller
      */
     public function show(Medico $medico)
     {
-        //
+        return view('medico.show', compact('medico'));
     }
 
     /**
@@ -51,7 +55,7 @@ class MedicoController extends Controller
      */
     public function edit(Medico $medico)
     {
-        //
+        return view('medico.edit', compact('medico'));
     }
 
     /**
@@ -59,7 +63,16 @@ class MedicoController extends Controller
      */
     public function update(Request $request, Medico $medico)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'id_medico' => 'required|integer|unique:medico,id_medico,' . $medico->id,
+            'correo' => 'required|string|email|max:255|unique:medico,correo,' . $medico->id,
+            'especialidad' => 'required|string|max:255',
+        ]);
+
+        $medico->update($request->all());
+        return redirect()->route('medico.index')->with('success', 'Médico actualizado exitosamente.');
     }
 
     /**
@@ -67,6 +80,8 @@ class MedicoController extends Controller
      */
     public function destroy(Medico $medico)
     {
-        //
+        $medico->delete();
+        
+        return redirect()->route('medico.index')->with('success', 'Médico eliminado exitosamente.');
     }
 }

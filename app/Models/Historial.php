@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CitaMedica extends Model
+class Historial extends Model
 {
     use HasFactory;
 
+    protected $table = 'historial';
+
     protected $fillable =[
-        'estado',
-        'fecha',
-        'hora',
-        'idCita',
-        'tipoCita',
-        
+        'alergias',
+        'enfermedades_previas',
+        'id_historial',
+        'tratamientos',
     ];
 }

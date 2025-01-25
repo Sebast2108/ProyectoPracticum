@@ -21,7 +21,7 @@ class SecretariaController extends Controller
      */
     public function create()
     {
-        //
+        return view('secretaria.create');
     }
 
     /**
@@ -32,9 +32,13 @@ class SecretariaController extends Controller
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
-            'idSecretaria' => 'required|integer|min:0',
-            'correo' => 'required|email|max:255',
+            'id_secretaria' => 'required|integer|unique:secretaria,id_secretaria',
+            'correo' => 'required|email|max:255|unique:secretaria,correo',
         ]);
+
+        Secretaria::create($request->all());
+
+        return redirect()->route('secretaria.index')->with('success', 'Secretaria creada con éxito.');
     }
 
     /**
@@ -42,7 +46,7 @@ class SecretariaController extends Controller
      */
     public function show(Secretaria $secretaria)
     {
-        //
+        return view('secretaria.show', compact('secretaria'));
     }
 
     /**
@@ -50,7 +54,7 @@ class SecretariaController extends Controller
      */
     public function edit(Secretaria $secretaria)
     {
-        //
+        return view('secretaria.edit', compact('secretaria'));
     }
 
     /**
@@ -58,7 +62,16 @@ class SecretariaController extends Controller
      */
     public function update(Request $request, Secretaria $secretaria)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'apellido' => 'required|string|max:255',
+            'id_secretaria' => 'required|integer|unique:secretaria,id_secretaria,' . $secretaria->id,
+            'correo' => 'required|email|max:255|unique:secretaria,correo,' . $secretaria->id,
+        ]);
+
+        $secretaria->update($request->all());
+
+        return redirect()->route('secretaria.index')->with('success', 'Secretaria actualizada con éxito.');
     }
 
     /**
@@ -66,6 +79,8 @@ class SecretariaController extends Controller
      */
     public function destroy(Secretaria $secretaria)
     {
-        //
+        $secretaria->delete();
+
+        return redirect()->route('secretaria.index')->with('success', 'Secretaria eliminada con éxito.');
     }
 }

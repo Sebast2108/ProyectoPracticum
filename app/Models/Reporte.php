@@ -9,6 +9,8 @@ class Reporte extends Model
 {
     use HasFactory;
 
+    protected $table = 'reporte';
+
     protected $fillable =[
         'correo',
         'fechaGeneracion',

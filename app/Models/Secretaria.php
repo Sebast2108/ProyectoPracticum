@@ -9,10 +9,12 @@ class Secretaria extends Model
 {
     use HasFactory;
 
+    protected $table = 'secretaria';
+
     protected $fillable =[
         'nombre',
         'apellido',
-        'idSecretaria',
+        'id_secretaria',
         'correo',
     ];
 }
