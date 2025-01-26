@@ -9,7 +9,7 @@
         <div class="card-body">
             <h5 class="card-title">Descripción: {{ $estadistica->descripcion }}</h5>
             <p class="card-text">ID Estadística: {{ $estadistica->id_estadistica }}</p>
-            <p class="card-text">Valor: {{ $estadistica->valor }}</p>
+            <p class="card-text">Calificación: {{ $estadistica->valor }}</p>
             <a href="{{ route('estadisticas.index') }}" class="btn btn-secondary">Volver</a>
         </div>
     </div>

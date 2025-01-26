@@ -12,7 +12,7 @@
             <tr>
                 <th class="text-center">Descripción</th>
                 <th class="text-center">ID Estadística</th>
-                <th class="text-center">Valor</th>
+                <th class="text-center">Calificación</th>
                 <th class="text-center">Acciones</th>
             </tr>
         </thead>

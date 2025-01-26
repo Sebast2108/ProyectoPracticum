@@ -32,7 +32,7 @@ class EstadisticasController extends Controller
         $request->validate([
             'descripcion' => 'required|string|max:255',
             'id_estadistica' => 'required|integer|unique:estadisticas,id_estadistica',
-            'valor' => 'required|numeric',
+            'valor' => 'required|string|max:255',
         ]);
 
         Estadisticas::create($request->all());
@@ -64,7 +64,7 @@ class EstadisticasController extends Controller
         $request->validate([
             'descripcion' => 'required|string|max:255',
             'id_estadistica' => 'required|integer|unique:estadisticas,id_estadistica,' . $estadistica->id,
-            'valor' => 'required|numeric',
+            'valor' => 'required|string|max:255',
         ]);
 
         $estadistica->update($request->all());

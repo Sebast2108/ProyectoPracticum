@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('estadisticas', function (Blueprint $table) {
             $table->id(); 
             $table->string('descripcion'); 
-            $table->integer('id_estadistica')->unique(); 
-            $table->float('valor'); 
+            $table->string('id_estadistica')->unique(); 
+            $table->string('valor'); 
             $table->timestamps();
         });
     }
