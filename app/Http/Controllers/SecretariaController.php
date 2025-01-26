@@ -36,7 +36,7 @@ class SecretariaController extends Controller
             'correo' => 'required|email|max:255|unique:secretaria,correo',
         ]);
 
-        Secretaria::create($request->all());
+        secretaria::create($request->all());
 
         return redirect()->route('secretaria.index')->with('success', 'Secretaria creada con éxito.');
     }
@@ -44,7 +44,7 @@ class SecretariaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Secretaria $secretaria)
+    public function show(secretaria $secretaria)
     {
         return view('secretaria.show', compact('secretaria'));
     }
@@ -52,7 +52,7 @@ class SecretariaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Secretaria $secretaria)
+    public function edit(secretaria $secretaria)
     {
         return view('secretaria.edit', compact('secretaria'));
     }
@@ -60,7 +60,7 @@ class SecretariaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Secretaria $secretaria)
+    public function update(Request $request, secretaria $secretaria)
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
@@ -77,7 +77,7 @@ class SecretariaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Secretaria $secretaria)
+    public function destroy(secretaria $secretaria)
     {
         $secretaria->delete();
 

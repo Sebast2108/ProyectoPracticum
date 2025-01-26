@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Secretaria extends Model
 {
     use HasFactory;
-
+    
     protected $table = 'secretaria';
 
     protected $fillable =[

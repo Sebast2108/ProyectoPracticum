@@ -17,7 +17,7 @@
         </div>
         <div class="form-group mb-3">
             <label for="valor" class="form-label">Calificación:</label>
-            <input type="number" id="valor" name="valor" class="form-control" step="0.01" required>
+            <input type="text" id="valor" name="valor" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="{{ route('estadisticas.index') }}" class="btn btn-secondary">Cancelar</a>

@@ -1,14 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdministradorController;
-use App\Http\Controllers\Cita_MedicaController;
-use App\Http\Controllers\CitaController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\EstadisticasController;
-use App\Http\Controllers\GerenciaController;
 use App\Http\Controllers\GerenteController;
 use App\Http\Controllers\HistorialController;
-use App\Http\Controllers\HistorialMedicoController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ReporteController;
