@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Paciente;
+use App\Models\User; // Necesario para obtener usuarios
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PacienteController extends Controller
 {
@@ -12,7 +14,16 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $paciente = Paciente::all();
+        $user = Auth::user();
+
+        if ($user->role === 'paciente') {
+            // Mostrar solo el paciente asociado al usuario autenticado
+            $paciente = Paciente::where('user_id', $user->id)->get();
+        } else {
+            // Para otros roles, mostrar todos los pacientes
+            $paciente = Paciente::all();
+        }
+
         return view('paciente.index', compact('paciente'));
     }
 
@@ -21,7 +32,16 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.create');
+        $user = Auth::user();
+
+        if (in_array($user->role, ['administrador', 'secretaria'])) {
+            // Obtener usuarios con rol paciente para asignar al crear
+            $usuariosPaciente = User::where('role', 'paciente')->get();
+            return view('paciente.create', compact('usuariosPaciente'));
+        }
+
+        // Si no es admin ni secretaria, prohibir acceso
+        abort(403, 'Acceso denegado');
     }
 
     /**
@@ -29,15 +49,32 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $user = Auth::user();
+
+        // Validación común
+        $rules = [
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'id_paciente' => 'required|integer|unique:paciente,id_paciente',
-            'correo' => 'required|email|max:255|unique:paciente,correo',
+            'email' => 'required|email|max:255|unique:paciente,email',
             'historial_medico' => 'required|string|max:255',
-        ]);
+        ];
 
-        Paciente::create($request->all());
+        if (in_array($user->role, ['administrador', 'secretaria'])) {
+            // Admin y secretaria deben enviar user_id válido
+            $rules['user_id'] = 'required|exists:users,id';
+        }
+
+        $request->validate($rules);
+
+        $data = $request->all();
+
+        if ($user->role === 'paciente') {
+            // Paciente sólo puede auto-asignarse
+            $data['user_id'] = $user->id;
+        }
+
+        Paciente::create($data);
 
         return redirect()->route('paciente.index')->with('success', 'Paciente creado exitosamente.');
     }
@@ -47,6 +84,9 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
+        if (Auth::user()->role === 'paciente' && $paciente->user_id !== Auth::id()) {
+            abort(403, 'Acceso denegado');
+        }
         return view('paciente.show', compact('paciente'));
     }
 
@@ -55,6 +95,9 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
+        if (Auth::user()->role === 'paciente' && $paciente->user_id !== Auth::id()) {
+            abort(403, 'Acceso denegado');
+        }
         return view('paciente.edit', compact('paciente'));
     }
 
@@ -63,11 +106,15 @@ class PacienteController extends Controller
      */
     public function update(Request $request, Paciente $paciente)
     {
+        if (Auth::user()->role === 'paciente' && $paciente->user_id !== Auth::id()) {
+            abort(403, 'Acceso denegado');
+        }
+
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'id_paciente' => 'required|integer|unique:paciente,id_paciente,' . $paciente->id,
-            'correo' => 'required|email|max:255|unique:paciente,correo,' . $paciente->id,
+            'email' => 'required|email|max:255|unique:paciente,email,' . $paciente->id,
             'historial_medico' => 'required|string|max:255',
         ]);
 
@@ -81,6 +128,10 @@ class PacienteController extends Controller
      */
     public function destroy(Paciente $paciente)
     {
+        if (Auth::user()->role === 'paciente' && $paciente->user_id !== Auth::id()) {
+            abort(403, 'Acceso denegado');
+        }
+
         $paciente->delete();
 
         return redirect()->route('paciente.index')->with('success', 'Paciente eliminado exitosamente.');

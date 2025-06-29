@@ -35,4 +35,5 @@ class Citas extends Model
     {
         return $this->belongsTo(Historial::class, 'id_historial');
     }
+    
 }

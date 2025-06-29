@@ -3,70 +3,60 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gerente;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GerenteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $gerente = Gerente::all();
         return view('gerente.index', compact('gerente'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('gerente.create');
+        // Traemos usuarios con rol gerente para asignarlos
+        $usuariosGerente = User::where('role', 'gerente')->get();
+
+        return view('gerente.create', compact('usuariosGerente'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'id_gerente' => 'required|integer|unique:gerente,id_gerente',
-            'correo' => 'required|email|max:255|unique:gerente,correo',
+            'email' => 'required|email|max:255|unique:gerente,email',
+            'user_id' => 'required|exists:users,id',
         ]);
 
-        gerente::create($request->all());
+        Gerente::create($request->all());
 
         return redirect()->route('gerente.index')->with('success', 'Gerente creado con éxito.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(gerente $gerente)
+    public function show(Gerente $gerente)
     {
         return view('gerente.show', compact('gerente'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(gerente $gerente)
+    public function edit(Gerente $gerente)
     {
-        return view('gerente.edit', compact('gerente'));
+        $usuariosGerente = User::where('role', 'gerente')->get();
+
+        return view('gerente.edit', compact('gerente', 'usuariosGerente'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, gerente $gerente)
+    public function update(Request $request, Gerente $gerente)
     {
         $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'id_gerente' => 'required|integer|unique:gerente,id_gerente,' . $gerente->id,
-            'correo' => 'required|email|max:255|unique:gerente,correo,' . $gerente->id,
+            'email' => 'required|email|max:255|unique:gerente,email,' . $gerente->id,
+            'user_id' => 'required|exists:users,id',
         ]);
 
         $gerente->update($request->all());
@@ -74,10 +64,7 @@ class GerenteController extends Controller
         return redirect()->route('gerente.index')->with('success', 'Gerente actualizado con éxito.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(gerente $gerente)
+    public function destroy(Gerente $gerente)
     {
         $gerente->delete();
 

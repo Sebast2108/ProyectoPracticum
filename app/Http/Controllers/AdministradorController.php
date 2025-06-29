@@ -33,7 +33,7 @@ class AdministradorController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'id_administrador' => 'required|integer|unique:administrador,id_administrador',
-            'correo' => 'required|email|max:255|unique:administrador,correo',
+            'email' => 'required|email|max:255|unique:administrador,email',
         ]);
 
         administrador::create($request->all());
@@ -66,7 +66,7 @@ class AdministradorController extends Controller
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
             'id_administrador' => 'required|integer|unique:administrador,id_administrador,' . $administrador->id,
-            'correo' => 'required|email|max:255|unique:administrador,correo,' . $administrador->id,
+            'email' => 'required|email|max:255|unique:administrador,email,' . $administrador->id,
         ]);
 
         $administrador->update($request->all());

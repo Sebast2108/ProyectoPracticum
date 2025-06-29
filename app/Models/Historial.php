@@ -11,10 +11,19 @@ class Historial extends Model
 
     protected $table = 'historial';
 
-    protected $fillable =[
-        'alergias',
-        'enfermedades_previas',
-        'id_historial',
+    protected $fillable = [
+        'cita_id',       
+        'sintomas',
+        'diagnostico',
         'tratamientos',
+        'observaciones',
     ];
+
+    /**
+     * Relación con la cita asociada al historial.
+     */
+    public function cita()
+    {
+        return $this->belongsTo(Citas::class, 'cita_id');
+    }
 }

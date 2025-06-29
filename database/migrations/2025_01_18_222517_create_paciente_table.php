@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medico', function (Blueprint $table) {
+        Schema::create('paciente', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('apellido');
-            $table->integer('id_medico')->unique();
-            $table->string('correo')->unique();
-            $table->string('especialidad');
+            $table->integer('id_paciente')->unique();
+            $table->string('email')->unique();
+            $table->string('historial_medico');
+            $table->unsignedBigInteger('user_id')->unique(); // 1 paciente - 1 usuario
             $table->timestamps();
+
+            // Clave foránea hacia users
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medico');
+        Schema::dropIfExists('paciente');
     }
 };

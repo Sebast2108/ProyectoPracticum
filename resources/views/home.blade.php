@@ -10,7 +10,7 @@
         <hr class="my-4">
         <img src="https://www.salud.gob.ec/wp-content/uploads/2018/09/HG-ISIDRO-AYORA.png" alt="Hospital General Isidro Ayora">
         <br>
-        <p> Autor: Bryan Torres </p>
+        <p> Autor: Bryan Torres C </p>
     </div>
 
 @endsection

@@ -1,0 +1,105 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Barra lateral */
+.sidebar {
+    background-color: #0d6efd !important;
+}
+
+.sidebar .nav-link {
+    color: #ffffff;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #084298;
+    color: #ffffff;
+}
+
+/* Pie de página */
+footer {
+    font-size: 0.9rem;
+}
+
+/* Cerrar sesión */
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Tamaño base para tarjetas en formularios */
+.form-card {
+    min-width: 350px;
+    max-width: 600px;
+}
+
+/* Contenedor principal para formularios centrado */
+.form-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Variante estrecha para tarjetas de formularios */
+.form-card-narrow {
+    min-width: 350px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+/* Variante compacta para tarjetas de formularios */
+.form-card.compact {
+    min-width: 350px;
+    max-width: 400px;
+}
+
+/* Tarjeta para detalles con ancho limitado */
+.card-detalles {
+    min-width: 350px;
+    max-width: 400px;
+    width: 100%;
+}
+
+
+/* Indicador de columnas ordenables en tablas */
+th.sortable {
+    cursor: pointer;
+}
+
+/* Margen derecho para botones de acción en tablas */
+.table td .btn {
+    margin-right: 4px;
+}
+
+/* Estilo para filas vacías en tablas */
+.table .text-center {
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Margen superior para botones centrados dentro de tarjetas */
+.card-body.text-center .btn {
+    margin-top: 0.5rem;
+}
+
+/*  tarjetas */
+
+.login-card {
+            border-radius: 1rem;
+            position: relative;
+        }
+        .btn-return {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .login-title {
+            font-weight: 600;
+            color: #0d6efd;
+        }

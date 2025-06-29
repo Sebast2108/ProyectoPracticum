@@ -15,6 +15,6 @@ class Administrador extends Model
         'nombre',
         'apellido',
         'id_administrador',
-        'correo',
+        'email',
     ];
 }

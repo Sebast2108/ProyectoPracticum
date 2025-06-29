@@ -16,8 +16,11 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('id_gerente')->unique();
-            $table->string('correo')->unique();
+            $table->string('email')->unique();
+            $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

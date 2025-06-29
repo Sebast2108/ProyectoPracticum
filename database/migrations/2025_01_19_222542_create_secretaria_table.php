@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('apellido');
             $table->integer('id_secretaria')->unique();
-            $table->string('correo')->unique();
+            $table->string('email')->unique();
+            $table->unsignedBigInteger('user_id')->unique();
             $table->timestamps();
         });
     }
